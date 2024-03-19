@@ -1,9 +1,10 @@
-{
+﻿{
   "name": "Linq Acts No Queue With Framework",
   "projectId": "fef7706c-2c93-41a3-9b95-8a37be74946f",
   "description": "ПЗ Акты Linq No Queue with Framework",
   "main": "Main.xaml",
   "dependencies": {
+    "UiPath.Database.Activities": "[1.8.2-preview]",
     "UiPath.Excel.Activities": "[2.23.2-preview]",
     "UiPath.System.Activities": "[24.2.0-preview]",
     "UiPath.Testing.Activities": "[24.2.0-preview]",
