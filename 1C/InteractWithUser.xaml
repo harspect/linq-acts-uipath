@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>869.6,3602.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>869.6,3861.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>InteractWithUser_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -105,7 +105,7 @@
       <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="InteractWithUser" sap:VirtualizedContainerService.HintSize="528.8,3537.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="InteractWithUser" sap:VirtualizedContainerService.HintSize="641.6,3796.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_answer" />
       <Variable x:TypeArguments="x:String" Name="str_inn" />
@@ -119,12 +119,12 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InputDialog Options="{x:Null}" Title="{x:Null}" DisplayName="Input Dialog - Run 1C" sap:VirtualizedContainerService.HintSize="466.4,335.2" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Запускать 1С?" OptionsString="Да;Нет">
+    <ui:InputDialog Options="{x:Null}" Title="{x:Null}" DisplayName="Input Dialog - Run 1C" sap:VirtualizedContainerService.HintSize="579.2,335.2" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Запускать 1С?" OptionsString="Да;Нет">
       <ui:InputDialog.Result>
         <OutArgument x:TypeArguments="x:String">[str_answer]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
-    <ui:IfElseIf DisplayName="IF нет - exit from script" sap:VirtualizedContainerService.HintSize="466.4,370.4" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+    <ui:IfElseIf DisplayName="IF нет - exit from script" sap:VirtualizedContainerService.HintSize="579.2,629.6" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
       <ui:IfElseIf.ConditionBlocks>
         <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
           <ui:IfElseIfBlock BlockType="If" Condition="[str_answer.Equals(&quot;Нет&quot;)]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_1">
@@ -139,6 +139,22 @@
               </Sequence>
             </ui:IfElseIfBlock.Then>
           </ui:IfElseIfBlock>
+          <ui:IfElseIfBlock BlockType="Else" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_2">
+            <ui:IfElseIfBlock.Then>
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,223.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="1C\Launch1C.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="353.6,136.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="1C\Launch1C.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+              </Sequence>
+            </ui:IfElseIfBlock.Then>
+          </ui:IfElseIfBlock>
         </sc:BindingList>
       </ui:IfElseIf.ConditionBlocks>
       <sap:WorkflowViewStateService.ViewState>
@@ -148,7 +164,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:IfElseIf>
-    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" Title="{x:Null}" DisplayName="Input Dialog - ИНН Контрагента" sap:VirtualizedContainerService.HintSize="466.4,64.8" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Введите ИНН Контрагента">
+    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" Title="{x:Null}" DisplayName="Input Dialog - ИНН Контрагента" sap:VirtualizedContainerService.HintSize="579.2,64.8" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Введите ИНН Контрагента">
       <ui:InputDialog.Result>
         <OutArgument x:TypeArguments="x:String">[str_inn]</OutArgument>
       </ui:InputDialog.Result>
@@ -159,7 +175,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InputDialog>
-    <ui:InputDialog Options="{x:Null}" Title="{x:Null}" DisplayName="Input Dialog - Выберите номер договора" sap:VirtualizedContainerService.HintSize="466.4,64.8" sap2010:WorkflowViewState.IdRef="InputDialog_3" IsPassword="False" Label="Введите Номер договора" OptionsString="12211;100001;Основной договор">
+    <ui:InputDialog Options="{x:Null}" Title="{x:Null}" DisplayName="Input Dialog - Выберите номер договора" sap:VirtualizedContainerService.HintSize="579.2,64.8" sap2010:WorkflowViewState.IdRef="InputDialog_3" IsPassword="False" Label="Введите Номер договора" OptionsString="12211;100001;Основной договор">
       <ui:InputDialog.Result>
         <OutArgument x:TypeArguments="x:String">[str_contractNumber]</OutArgument>
       </ui:InputDialog.Result>

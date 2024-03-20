@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>869.6,3076.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>869.6,2952</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>MatchSecondTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -99,7 +99,7 @@
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="MatchSecondTransaction" sap:VirtualizedContainerService.HintSize="750.4,3012" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="MatchSecondTransaction" sap:VirtualizedContainerService.HintSize="750.4,2887.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_documentNum1" />
       <Variable x:TypeArguments="x:String" Name="str_date1" />
@@ -113,22 +113,22 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[not row_transactionItem1 is Nothing]" sap:VirtualizedContainerService.HintSize="688,2923.2" sap2010:WorkflowViewState.IdRef="If_4">
+    <If Condition="[not row_transactionItem1 is Nothing]" sap:VirtualizedContainerService.HintSize="688,2798.4" sap2010:WorkflowViewState.IdRef="If_4">
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="654.4,1647.2" sap2010:WorkflowViewState.IdRef="Sequence_12">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="654.4,1584.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Write 2nd type by 1st" sap:VirtualizedContainerService.HintSize="592,1560.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <Sequence DisplayName="Write 2nd type by 1st" sap:VirtualizedContainerService.HintSize="592,1498.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MultipleAssign DisplayName="Get date and document number in datarow 1" sap:VirtualizedContainerService.HintSize="529.6,250.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+            <ui:MultipleAssign DisplayName="Get date and document number in datarow 1" sap:VirtualizedContainerService.HintSize="529.6,188" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
@@ -145,22 +145,6 @@
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
                       <InArgument x:TypeArguments="x:String">[Regex.Match(row_transactionItem1("Документ").ToString(), "([^\d\s0]*)(0*)(\d+).*(\d{2}\.\d{2}\.\d{4})").Groups(3).Value()]</InArgument>
-                    </ui:AssignOperation.Value>
-                  </ui:AssignOperation>
-                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
-                    <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:Decimal">[dec_debet1]</OutArgument>
-                    </ui:AssignOperation.To>
-                    <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:Decimal">[Decimal.Parse(Regex.Replace(row_transactionItem1("Дебет").ToString, "^$", "0"))]</InArgument>
-                    </ui:AssignOperation.Value>
-                  </ui:AssignOperation>
-                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
-                    <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:Decimal">[dec_credit1]</OutArgument>
-                    </ui:AssignOperation.To>
-                    <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:Decimal">[Decimal.Parse(Regex.Replace(row_transactionItem1("Кредит").ToString, "^$", "0"))]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                 </scg:List>
@@ -241,13 +225,13 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="654.4,1114.4" sap2010:WorkflowViewState.IdRef="Sequence_13">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="654.4,1052" sap2010:WorkflowViewState.IdRef="Sequence_13">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Write 1st type by 2nd" sap:VirtualizedContainerService.HintSize="592,1028" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <Sequence DisplayName="Write 1st type by 2nd" sap:VirtualizedContainerService.HintSize="592,965.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="str_documentNum2" />
               <Variable x:TypeArguments="x:String" Name="str_date2" />
@@ -260,7 +244,7 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MultipleAssign DisplayName="Get date and document number in datarow 2" sap:VirtualizedContainerService.HintSize="529.6,250.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+            <ui:MultipleAssign DisplayName="Get date and document number in datarow 2" sap:VirtualizedContainerService.HintSize="529.6,188" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
@@ -277,22 +261,6 @@
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
                       <InArgument x:TypeArguments="x:String">[Regex.Match(row_transactionItem2("Номер документа").ToString(), "(0*)(\d+)[^\d]*$").Groups(2).Value]</InArgument>
-                    </ui:AssignOperation.Value>
-                  </ui:AssignOperation>
-                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
-                    <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:Decimal">[dec_debet2]</OutArgument>
-                    </ui:AssignOperation.To>
-                    <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:Decimal">[Decimal.Parse(Regex.Replace(row_transactionItem2("Дебет").ToString, "^$", "0"))]</InArgument>
-                    </ui:AssignOperation.Value>
-                  </ui:AssignOperation>
-                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
-                    <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:Decimal">[dec_credit2]</OutArgument>
-                    </ui:AssignOperation.To>
-                    <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:Decimal">[Decimal.Parse(Regex.Replace(row_transactionItem2("Кредит").ToString, "^$", "0"))]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                 </scg:List>

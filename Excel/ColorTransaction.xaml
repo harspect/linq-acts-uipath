@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>869.6,2236.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>869.6,2524</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ColorTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -44,6 +44,7 @@
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Xml.Serialization</x:String>
       <x:String>System.Numerics</x:String>
+      <x:String>Newtonsoft.Json</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -101,15 +102,19 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ColorTransaction" sap:VirtualizedContainerService.HintSize="688,2172" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ColorTransaction" sap:VirtualizedContainerService.HintSize="688,2459.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If sap2010:Annotation.AnnotationText="Color 1st sheet" Condition="[not row_transactionItem1 is Nothing]" DisplayName="Color transaction of 1 type" sap:VirtualizedContainerService.HintSize="625.6,1049.6" sap2010:WorkflowViewState.IdRef="If_1">
+    <If sap2010:Annotation.AnnotationText="Color 1st sheet" Condition="[not row_transactionItem1 is Nothing]" DisplayName="Color transaction of 1 type" sap:VirtualizedContainerService.HintSize="625.6,1193.6" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -118,37 +123,40 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="592,737.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="592,881.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="529.6,651.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[dict_config(&quot;ActsWorkingFilePath&quot;).ToString]">
+          <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="529.6,795.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[dict_config(&quot;ActsWorkingFilePath&quot;).ToString]">
             <ui:ExcelApplicationScope.Body>
               <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,518.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,662.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="sd:DataTable" Name="dt_act1" />
                     <Variable x:TypeArguments="x:Int32" Name="int_rowNumber" />
+                    <Variable x:TypeArguments="x:String" Name="str_new" />
+                    <Variable x:TypeArguments="x:Int32" Name="int_columnNumber" />
                   </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:ExcelReadRange AddHeaders="True" DataTable="[dt_act1]" DisplayName="Read dt_act1" sap:VirtualizedContainerService.HintSize="433.6,100" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="First">
-                    <ui:ExcelReadRange.Range>
-                      <InArgument x:TypeArguments="x:String">
-                        <Literal x:TypeArguments="x:String" Value="" />
-                      </InArgument>
-                    </ui:ExcelReadRange.Range>
-                  </ui:ExcelReadRange>
-                  <Assign DisplayName="Find row number to color in excel" sap:VirtualizedContainerService.HintSize="433.6,120.8" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <Assign DisplayName="Read dt_act2 from config" sap:VirtualizedContainerService.HintSize="433.6,121.6" sap2010:WorkflowViewState.IdRef="Assign_6">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="sd:DataTable">[dt_act1]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="sd:DataTable">[CType(dict_config("DtActs1"), DataTable)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign DisplayName="Find row number to color in excel" sap:VirtualizedContainerService.HintSize="433.6,121.6" sap2010:WorkflowViewState.IdRef="Assign_1">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Int32">[int_rowNumber]</OutArgument>
                     </Assign.To>
@@ -156,7 +164,15 @@
                       <InArgument x:TypeArguments="x:Int32">[2 + dt_act1.Rows.IndexOf(dt_act1.AsEnumerable().Where(function(x) x(2).ToString.Equals(row_transactionItem1("Документ"))).First())]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:ExcelSetRangeColor Color="[Color.FromName(str_color)]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="433.6,211.2" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_1" Range="[&quot;C&quot; + (int_rowNumber).ToString]" SheetName="First" />
+                  <Assign DisplayName="Find column number to color in excel" sap:VirtualizedContainerService.HintSize="433.6,121.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[int_columnNumber]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[Int32.Parse(dict_config("ActsColumnToFill1").ToString())]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:ExcelSetRangeColor Color="[Color.FromName(str_color)]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="433.6,211.2" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_3" Range="[ChrW(int_columnNumber + 65).ToString() + (int_rowNumber).ToString]" SheetName="First" />
                 </Sequence>
               </ActivityAction>
             </ui:ExcelApplicationScope.Body>
@@ -173,7 +189,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If sap2010:Annotation.AnnotationText="Color 2nd sheet" Condition="[not row_transactionItem2 is Nothing]" DisplayName="Color transaction of 2 type" sap:VirtualizedContainerService.HintSize="625.6,1033.6" sap2010:WorkflowViewState.IdRef="If_2">
+    <If sap2010:Annotation.AnnotationText="Color 2nd sheet" Condition="[not row_transactionItem2 is Nothing]" DisplayName="Color transaction of 2 type" sap:VirtualizedContainerService.HintSize="625.6,1176.8" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -182,37 +198,39 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="592,738.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="592,881.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="529.6,652" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[dict_config(&quot;ActsWorkingFilePath&quot;).ToString]">
+          <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="529.6,795.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[dict_config(&quot;ActsWorkingFilePath&quot;).ToString]">
             <ui:ExcelApplicationScope.Body>
               <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,519.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,662.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="sd:DataTable" Name="dt_act1" />
                     <Variable x:TypeArguments="x:Int32" Name="int_rowNumber" />
                     <Variable x:TypeArguments="sd:DataTable" Name="dt_act2" />
+                    <Variable x:TypeArguments="x:Int32" Name="int_columnNumber" />
                   </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:ExcelReadRange AddHeaders="True" DataTable="[dt_act2]" DisplayName="Read dt_act2" sap:VirtualizedContainerService.HintSize="433.6,100" sap2010:WorkflowViewState.IdRef="ExcelReadRange_2" SheetName="Second">
-                    <ui:ExcelReadRange.Range>
-                      <InArgument x:TypeArguments="x:String">
-                        <Literal x:TypeArguments="x:String" Value="" />
-                      </InArgument>
-                    </ui:ExcelReadRange.Range>
-                  </ui:ExcelReadRange>
+                  <Assign DisplayName="Read dt_act2 from config" sap:VirtualizedContainerService.HintSize="433.6,121.6" sap2010:WorkflowViewState.IdRef="Assign_7">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="sd:DataTable">[dt_act2]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="sd:DataTable">[CType(dict_config("DtActs2"), DataTable)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
                   <Assign DisplayName="Find row number to color in excel" sap:VirtualizedContainerService.HintSize="433.6,121.6" sap2010:WorkflowViewState.IdRef="Assign_2">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Int32">[int_rowNumber]</OutArgument>
@@ -221,7 +239,15 @@
                       <InArgument x:TypeArguments="x:Int32">[2 + dt_act2.Rows.IndexOf(dt_act2.AsEnumerable().Where(function(x) x(3).ToString.Equals(row_transactionItem2("Номер документа"))).First())]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:ExcelSetRangeColor Color="[Color.FromName(str_color)]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="433.6,211.2" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_2" Range="[&quot;D&quot; + (int_rowNumber).ToString]" SheetName="Second" />
+                  <Assign DisplayName="Find column number to color in excel" sap:VirtualizedContainerService.HintSize="433.6,121.6" sap2010:WorkflowViewState.IdRef="Assign_5">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[int_columnNumber]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[Int32.Parse(dict_config("ActsColumnToFill2").ToString())]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:ExcelSetRangeColor Color="[Color.FromName(str_color)]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="433.6,211.2" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_2" Range="[ChrW(int_columnNumber + 65).ToString() + (int_rowNumber).ToString]" SheetName="Second" />
                 </Sequence>
               </ActivityAction>
             </ui:ExcelApplicationScope.Body>

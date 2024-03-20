@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>869.6,3160</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>869.6,3323.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CreateTransactionsData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -107,7 +107,7 @@
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CreateTransactionsData" sap:VirtualizedContainerService.HintSize="688,3095.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CreateTransactionsData" sap:VirtualizedContainerService.HintSize="688,3258.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_transactions" />
       <Variable x:TypeArguments="ui:WorkbookApplication" Name="workbook_Results" />
@@ -117,15 +117,15 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:CopyFile ContinueOnError="{x:Null}" Destination="Data/Temp" DisplayName="Copy Акты To Temp" sap:VirtualizedContainerService.HintSize="625.6,195.2" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="Data/Input/Акты_Исходные.xlsx" />
-    <ui:CopyFile ContinueOnError="{x:Null}" Destination="Data/Temp" DisplayName="Copy Шаблон To Temp" sap:VirtualizedContainerService.HintSize="625.6,195.2" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="True" Path="Data/Input/Шаблон.xlsx" />
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Read Excel Acts" sap:VirtualizedContainerService.HintSize="625.6,2616" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="Data\Temp\Акты_Исходные.xlsx">
+    <ui:CopyFile ContinueOnError="{x:Null}" Destination="Data/Temp" DisplayName="Copy Акты To Temp" sap:VirtualizedContainerService.HintSize="625.6,195.2" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[dict_config(&quot;ActsInputFilePath&quot;).ToString]" />
+    <ui:CopyFile ContinueOnError="{x:Null}" Destination="Data/Temp" DisplayName="Copy Шаблон To Temp" sap:VirtualizedContainerService.HintSize="625.6,195.2" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="True" Path="[dict_config(&quot;ResultsInputPath&quot;).ToString]" />
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Read Excel Acts" sap:VirtualizedContainerService.HintSize="625.6,2779.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[dict_config(&quot;ActsWorkingFilePath&quot;).ToString]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="592,2483.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="592,2646.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="dt_act1" />
               <Variable x:TypeArguments="sd:DataTable" Name="dt_act2" />
@@ -280,10 +280,10 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:ForEach>
-            <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Обработано" DataTable="[dt_act1]" DefaultValue="0" DisplayName="Add Data Column &quot;Обработано&quot;" sap:VirtualizedContainerService.HintSize="529.6,64.8" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_9">
+            <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Обработано" DataTable="[dt_act1]" DefaultValue="0" DisplayName="Add Data Column &quot;Обработано&quot;" sap:VirtualizedContainerService.HintSize="529.6,228" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_9">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
